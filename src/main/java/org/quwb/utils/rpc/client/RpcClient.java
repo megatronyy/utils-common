@@ -38,11 +38,13 @@ public class RpcClient {
         logger.info(reply.getMessage());
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
         RpcClient client = new RpcClient("127.0.0.1", 50051);
         for(int i=0;i<5;i++){
             client.greet("world:"+i);
         }
+
+        client.shutdown();
 
         System.in.read();
     }
