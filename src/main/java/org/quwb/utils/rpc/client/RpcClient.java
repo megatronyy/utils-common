@@ -1,4 +1,4 @@
-package org.quwb.utils.client;
+package org.quwb.utils.rpc.client;
 
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;

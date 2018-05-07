@@ -1,4 +1,4 @@
-package org.quwb.utils.server;
+package org.quwb.utils.rpc.server;
 
 import io.grpc.stub.StreamObserver;
 import org.quwb.utils.rpc.proto.GreeterGrpc;
