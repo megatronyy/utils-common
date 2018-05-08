@@ -27,7 +27,8 @@ public class EchoClient {
         EventLoopGroup group = new NioEventLoopGroup();
         try {
             Bootstrap b = new Bootstrap();
-            b.group(group)
+            // 启动客户端
+            ChannelFuture f = b.group(group)
                     .channel(NioSocketChannel.class)
                     .remoteAddress(new InetSocketAddress(host, port))
                     .handler(new ChannelInitializer<SocketChannel>() {
@@ -35,14 +36,19 @@ public class EchoClient {
                         public void initChannel(SocketChannel ch) throws Exception {
                             ch.pipeline().addLast(new EchoClientHandler());
                         }
-                    });
+                    })
+                    .connect()
+                    .sync();
 
-            // 启动客户端
-            ChannelFuture f = b.connect().sync();
             // 直到连接关闭
             f.channel().closeFuture().sync();
         } finally {
             group.shutdownGracefully();
         }
+    }
+
+    public static void main(String[] args) throws Exception {
+        EchoClient client = new EchoClient("127.0.0.1", 50051);
+        client.start();
     }
 }

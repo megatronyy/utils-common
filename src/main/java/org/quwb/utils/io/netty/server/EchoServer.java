@@ -18,7 +18,7 @@ import java.net.InetSocketAddress;
 public class EchoServer {
     private int port;
 
-    public EchoServer(int port){
+    public EchoServer(int port) {
         this.port = port;
     }
 
@@ -26,7 +26,7 @@ public class EchoServer {
         EventLoopGroup group = new NioEventLoopGroup();
         try {
             ServerBootstrap b = new ServerBootstrap();
-            b.group(group)
+            ChannelFuture f = b.group(group)
                     .channel(NioServerSocketChannel.class)
                     .localAddress(new InetSocketAddress(port))
                     .childHandler(new ChannelInitializer<SocketChannel>() {
@@ -34,14 +34,20 @@ public class EchoServer {
                         public void initChannel(SocketChannel ch) throws Exception {
                             ch.pipeline().addLast(new EchoServerHandler());
                         }
-                    });
+                    })
+                    .bind()
+                    .sync();
 
-            ChannelFuture f = b.bind().sync();
             System.out.println("Server start listen at " + port);
             //等待服务器socket关闭
             f.channel().closeFuture().sync();
         } finally {
             group.shutdownGracefully();
         }
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+        EchoServer server = new EchoServer(50051);
+        server.start();
     }
 }
