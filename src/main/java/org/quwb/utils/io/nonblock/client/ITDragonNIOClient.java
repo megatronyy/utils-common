@@ -1,4 +1,4 @@
-package org.quwb.utils.netty.nblockIO.client;
+package org.quwb.utils.io.nonblock.client;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;

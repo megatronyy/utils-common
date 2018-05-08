@@ -1,4 +1,4 @@
-package org.quwb.utils.netty.blockIO.client;
+package org.quwb.utils.io.block.client;
 
 import java.io.BufferedReader;
 import java.io.IOException;
