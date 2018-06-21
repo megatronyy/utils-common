@@ -13,6 +13,6 @@ public class AopMain {
     public static void main(String[] args) {
         ApplicationContext ctx = new FileSystemXmlApplicationContext("/src/main/resources/spring/aop/aopbean.xml");
         IStudent person = (IStudent)ctx.getBean("student");
-        person.addStudent("屈文斌");
+        person.addStudent("屈文斌1");
     }
 }
