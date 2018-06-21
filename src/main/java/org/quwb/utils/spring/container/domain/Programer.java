@@ -1,4 +1,5 @@
-package org.quwb.utils.container.domain;
+package org.quwb.utils.spring.container.domain;
+
 
 /**
  * @author quwb
