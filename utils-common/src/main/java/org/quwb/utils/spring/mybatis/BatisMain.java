@@ -1,7 +1,5 @@
 package org.quwb.utils.spring.mybatis;
 
-import org.apache.ibatis.datasource.pooled.PooledDataSource;
-import org.apache.ibatis.datasource.unpooled.UnpooledDataSource;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -17,7 +15,7 @@ public class BatisMain {
         //PooledDataSource
         //UnpooledDataSource
 
-        String resource = "spring/mybatis.xml";
+        String resource = "spring/mybatis/mybatis.xml";
         InputStream inputStream = null;
         try {
             inputStream = Resources.getResourceAsStream(resource);
