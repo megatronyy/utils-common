@@ -1,5 +1,7 @@
 package org.quwb.utils.base;
 
+import java.io.IOException;
+
 /**
  * static+final：
  * 1、静态常量，编译期常量，编译时就确定值。（Java代码执行顺序，先编译为class文件，在用虚拟机加载class文件执行）
@@ -21,10 +23,12 @@ public class StaticFinal {
 }
 
 class NotInit {
-    public static void main(String[] args){
+    public static void main(String[] args) throws IOException {
         //经过编译优化，静态常量HELLO已经存到NotInit类自身常量池中，不会加载StaticFinal
         System.out.println(StaticFinal.HELLO);
         String abc = new String("wenbin");
         abc.intern();
+
+        System.in.read();
     }
 }
