@@ -12,6 +12,11 @@ public class EsServer {
     private static final Logger logger = LoggerFactory.getLogger(EsServer.class);
 
     public static void main(String[] args){
-
+        try{
+            ElasticsearchUtil.init();
+            ElasticsearchUtil.createindex();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }
